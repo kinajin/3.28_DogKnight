@@ -16,7 +16,7 @@ public class Character : MonoBehaviour, Observer
 
     protected int _gameRound;
     protected int _whoseTurn;
-    protected bool _isFinised;
+    protected bool _isFinished;
 
     // 1. TurnUpdate: _gameRound, _whoseTurn update
     public void TurnUpdate(int round, string turn)
@@ -33,7 +33,7 @@ public class Character : MonoBehaviour, Observer
     /// <summary>
     /// 3. Attack: 공격시 실행될 내용 중 Player와 Enemy 공통으로 실행될 기능 작성
     /// 이후 각 class에서 오버라이딩해서 작성
-    /// 1) 게임이 끝나지 않았고 자신의 _playerNumber와 _whoseTurn이 일치한다면,
+    /// 1) 게임이 끝나지 않았고 자신의 _myName와 _whoseTurn이 일치한다면,
     /// 2) AttackMotion() 호출해서 애니메이션 실행
     /// 3) 상대방의 GetHit()에 자신의 _myDamage 넘겨서 호출
     /// </summary>
