@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 애니메이팅 트리거 이름 열거형으로 저장 (이해할 필요 없음)
 public enum AnimatorParameters
 {
     IsAttack, IsSpecialAttack, GetHit, IsDead
@@ -12,14 +13,13 @@ public class Character : MonoBehaviour, Observer
     public string _myName;
     public float _myHp;
     public float _myDamage;
-    public int _playerNumber;
 
     protected int _gameRound;
     protected int _whoseTurn;
     protected bool _isFinised;
 
     // 1. TurnUpdate: _gameRound, _whoseTurn update
-    public void TurnUpdate(int round, int turn)
+    public void TurnUpdate(int round, string turn)
     {
 
     }
@@ -47,7 +47,7 @@ public class Character : MonoBehaviour, Observer
     /// 이후 각 class에서 오버라이딩해서 작성
     /// 1) 넘겨 받은 damage만큼 _myHp 감소
     /// 2) 만약 _myHp가 0보다 작거나 같다면, DeadMotion() 호출해서 애니메이션 실행
-    ///    + Subject의 EndNotify()에 이긴 객체 _myName 넘겨서 호출
+    ///    + Subject의 EndNotify() 호출
     /// 3) 아직 살아있다면, GetHitMotion() 호출해서 애니메이션 실행
     ///    + Debug.Log($"{_myName} HP: {_myHp}"); 추가
     /// </summary>

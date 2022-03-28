@@ -7,33 +7,48 @@ public class GameManager : MonoBehaviour, Subject
     // 1. Singleton Pattern: Instance() method
     private static GameManager _instance;
 
-
-    private int gameRound = 0;
-    private int whoseTurn = 1;
-    private bool isEnd = false;
+    // 초기화 설정 바꾸지 말 것
+    private int _gameRound = 0;
+    private string _whoseTurn = "Enemy";
+    private bool _isEnd = false;
 
     // delegate: TurnHandler, FinishHandler 선언
 
-    // 2. Enemy까지 공격을 마치면 gameRound++ -> TurnNotify() 호출
+    /// <summary>
+    /// 2. RoundNotify:
+    /// 1) 현재 턴이 Enemy이면 다음 gameRound로
+    ///  + Debug.Log($"GameManager: Round {gameRound}.");
+    /// 2) TurnNotify() 호출
+    /// </summary>
     public void RoundNotify()
     {
-        //Debug.Log($"PlayerManager: Round {gameRound}.");
+
     }
 
-    // 3. whoseTurn update, _turnHandler 호출
+    /// <summary>
+    /// 3. TurnNotify:
+    /// 1) whoseTurn update
+    ///  + Debug.Log($"GameManager: {_whoseTurn} turn.");
+    /// 2) _turnHandler 호출
+    /// </summary>
     public void TurnNotify()
     {
-        //Debug.Log($"PlayerManager: player {whoseTurn} turn.");
+
     }
 
-    // 4. isEnd update, _finishHandler 호출
-    public void EndNotify(string name)
+    /// <summary>
+    /// 4. EndNotify: 
+    /// 1) isEnd update
+    ///  + Debug.Log("GameManager: The End");
+    ///  + Debug.Log($"GameManager: {_whoseTurn} is Win!");
+    /// 2) _finishHandler 호출
+    /// </summary>
+    public void EndNotify()
     {
-        //Debug.Log("PlayerManager: The End");
-        //Debug.Log($"PlayerManager: Character {name} is Win!");
+
     }
 
-    // 5. _turnHandler, _finishHandler 각각에 메소드 추가
+    // 5. AddCharacter: _turnHandler, _finishHandler 각각에 메소드 추가
     public void AddCharacter(Character character)
     {
 

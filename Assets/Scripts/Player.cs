@@ -10,9 +10,9 @@ public class Player : Character
     /// <summary>
     /// 1. Init: 초기화 기능
     /// 1) Subject에 Observer로 등록
-    /// 2) _myName, _myHp, _myDamage, _playerNumber 초기화
-    /// 3) _playerNumber는 무조건 0으로 할 것
-    /// 4) Player, 100, 20으로 각각 초기화 (권장 사항)
+    /// 2) _myName, _myHp, _myDamage 초기화
+    /// 3) _myName은 무조건 "Player"로 할 것
+    /// 4) _myHp, _myDamage는 100, 20으로 각각 초기화 (권장 사항)
     /// </summary>
     protected override void Init()
     {

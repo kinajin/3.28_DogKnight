@@ -10,9 +10,9 @@ public class Enemy : Character
     /// <summary>
     /// 1. Init: 초기화 기능
     /// 1) Subject에 Observer로 등록
-    /// 2) _myName, _myHp, _myDamage, _playerNumber 초기화
-    /// 3) _playerNumber는 무조건 1으로 할 것
-    /// 4) Enemy, 100, 10으로 각각 초기화 (권장 사항)
+    /// 2) _myName, _myHp, _myDamage 초기화
+    /// 3) _myName은 무조건 "Enemy"로 할 것
+    /// 4) _myHp, _myDamage는 100, 10으로 각각 초기화 (권장 사항)
     /// </summary>
     protected override void Init()
     {
