@@ -7,6 +7,11 @@ public class Enemy : Character
     private Player _player;
     private float _randomHeal;
 
+    string _myName = Enemy;
+    int myHP = 100;
+    int myDamage = 10;
+
+
     /// <summary>
     /// 1. Init: 초기화 기능
     /// 1) Subject에 Observer로 등록
@@ -40,7 +45,8 @@ public class Enemy : Character
     /// </summary>
     public override void Attack()
     {
-
+     
+        myDamage +=3
     }
 
     /// <summary>

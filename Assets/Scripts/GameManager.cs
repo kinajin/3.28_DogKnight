@@ -22,7 +22,12 @@ public class GameManager : MonoBehaviour, Subject
     /// </summary>
     public void RoundNotify()
     {
-
+        if (_isEnd == false)
+        {
+        Debug.Log($"GameManager:Round{gameRound}.");
+        _gameRound += 1;
+        }
+    
     }
 
     /// <summary>
@@ -33,7 +38,21 @@ public class GameManager : MonoBehaviour, Subject
     /// </summary>
     public void TurnNotify()
     {
-
+        
+        if (_isEnd == false)
+        {
+            if (_whoseTurn == Enemy)
+            {
+                Debug.Log($"GameManager: {_whoseTurn} turn.");
+                _whoseTurn = Player
+            }
+        
+            if (_whoseTurn == Player)
+            {
+                Debug.Log($"GameManager: {_whoseTurn} turn.");
+                _whoseTurn = Enemy
+            }
+        }
     }
 
     /// <summary>
@@ -46,11 +65,21 @@ public class GameManager : MonoBehaviour, Subject
     public void EndNotify()
     {
 
+        if (_isEnd == true )
+        {
+            Debug.Log("GameManager: The End");
+            Debug.Log($"GameManager: {_whoseTurn} is Win!");
+        }
     }
 
     // 5. AddCharacter: _turnHandler, _finishHandler 각각에 메소드 추가
     public void AddCharacter(Character character)
     {
+
+
+
+
+
 
     }
 }
