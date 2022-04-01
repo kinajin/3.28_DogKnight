@@ -22,11 +22,20 @@ public class Character : MonoBehaviour, Observer
     public void TurnUpdate(int round, string turn)
     {
 
+        int _gameRound = int round;
+        int whoseTurn = int turn;
+
+        // ****앞에 꼭 int 붙여야 하는지, 이게 맞는지 모르겠다
+
     }
 
     // 2. FinishUpdate: _isFinished update
     public void FinishUpdate(bool isFinish)
     {
+
+        bool _isFinished = bool isFinish;
+
+              // ****앞에 꼭 bool 붙여야 하는지, 이게 맞는지 모르겠다
 
     }
 
@@ -39,6 +48,12 @@ public class Character : MonoBehaviour, Observer
     /// </summary>
     public virtual void Attack()
     {
+
+
+        if ( isFinish==false && _myName == _whoseTurn ){
+            AttackMotion();
+        }
+
 
     }
 
@@ -53,6 +68,24 @@ public class Character : MonoBehaviour, Observer
     /// </summary>
     public virtual void GetHit(float damage)
     {
+
+        if ( _isFinished==false ){
+            _myHp -= damage
+        }
+
+
+        if ( myHP <= 0 ){
+            DeadMotion();
+        }
+        else {
+            GetHitMotion();
+            Debug.Log($"{_myName} HP: {_myHp}");
+        }
+
+
+
+
+
 
     }
 

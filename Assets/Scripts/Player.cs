@@ -14,7 +14,15 @@ public class Player : Character
     /// 3) _myName은 무조건 "Player"로 할 것
     /// 4) _myHp, _myDamage는 100, 20으로 각각 초기화 (권장 사항)
     /// </summary>
-    protected override void Init()
+    
+    
+    string _myName = "Player"
+    int _myHp = 100
+    int _myDamage = 20
+    
+    
+    
+        protected override void Init()
     {
         base.Init();
     }
@@ -30,7 +38,9 @@ public class Player : Character
     /// </summary>
     private void Start()
     {
-
+        if (player == null){
+                _player == GameObject.FindWithTag("Enemy")
+        }
     }
 
     /// <summary>
@@ -45,6 +55,14 @@ public class Player : Character
     /// </summary>
     public override void Attack()
     {
+
+
+
+        _randomAttack = Random.Range(0,10);
+        SpecialAttackMotion();
+        Debug.Log($"{_myName} Special Attack!"); 
+
+
 
     }
 

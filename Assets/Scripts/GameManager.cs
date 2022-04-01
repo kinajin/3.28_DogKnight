@@ -23,6 +23,19 @@ public class GameManager : MonoBehaviour, Subject
     public void RoundNotify()
     {
 
+
+
+        if (_isEnd == false && _whoseTurn == "Enemy" )
+        {
+        Debug.Log($"GameManager:Round{gameRound}.");
+        _gameRound += 1;
+        TurnNotify();
+        }
+    
+
+
+
+
     }
 
     /// <summary>
@@ -33,6 +46,29 @@ public class GameManager : MonoBehaviour, Subject
     /// </summary>
     public void TurnNotify()
     {
+
+
+ if (_isEnd == false)
+        {
+            if (_whoseTurn == "Enemy")
+            {
+                Debug.Log($"GameManager: {_whoseTurn} turn.");
+                _whoseTurn = "Player"
+            }
+        
+            else if (_whoseTurn == "Player")
+            {
+                Debug.Log($"GameManager: {_whoseTurn} turn.");
+                _whoseTurn = "Enemy"
+            }
+
+        }
+
+
+
+
+
+
 
     }
 
@@ -45,6 +81,11 @@ public class GameManager : MonoBehaviour, Subject
     /// </summary>
     public void EndNotify()
     {
+
+        _isEnd = true;
+        Debug.Log("GameManager: The End");
+        Debug.Log($"GameManager: {_whoseTurn} is Win!");
+        finishHandler();
 
     }
 

@@ -14,7 +14,16 @@ public class Enemy : Character
     /// 3) _myName은 무조건 "Enemy"로 할 것
     /// 4) _myHp, _myDamage는 100, 10으로 각각 초기화 (권장 사항)
     /// </summary>
-    protected override void Init()
+    
+    
+    
+    string _myName = "Enemy"
+    int _myHp = 100
+    int _myDamage = 10
+
+    
+    
+        protected override void Init()
     {
         base.Init();
     }
@@ -31,6 +40,10 @@ public class Enemy : Character
     private void Start()
     {
 
+        if (player == null){
+                _player == GameObject.FindWithTag("Player")
+        }
+
     }
 
     /// <summary>
@@ -40,6 +53,10 @@ public class Enemy : Character
     /// </summary>
     public override void Attack()
     {
+
+        if (_gameRound == 10) {
+            _myDamage = _myHp;
+        }
 
     }
 
@@ -51,6 +68,14 @@ public class Enemy : Character
     /// </summary>
     public override void GetHit(float damage)
     {
+
+
+
+
+
+
+
+
 
     }
 }
