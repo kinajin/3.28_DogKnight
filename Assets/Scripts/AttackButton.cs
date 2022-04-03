@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class AttackButton : MonoBehaviour
 {
     /// <summary>
-    /// °ø°Ý ¹× ÇÇ°Ý ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà ´Ù µÉ ¶§±îÁö AttackButton ºñÈ°¼ºÈ­ ÇÏ´Â ÄÚµå
-    /// ÀÌÇØÇÒ ÇÊ¿ä ¾øÀ½ + °Çµå¸®Áö ¸» °Í
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ç°ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ AttackButton ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï´ï¿½ ï¿½Úµï¿½
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ + ï¿½Çµå¸®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
     /// </summary>
     public void Active()
     {
         StartCoroutine(ButtonDisableCoroutine());
     }
+
+    
 
     IEnumerator ButtonDisableCoroutine()
     {
