@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour, Subject
 {
     // 1. Singleton Pattern: Instance() method
-    private static GameManager _instance;
+    private static GameManager instance;
 
 
     public static GameManager Instance()
