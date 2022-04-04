@@ -7,32 +7,80 @@ public class GameManager : MonoBehaviour, Subject
     // 1. Singleton Pattern: Instance() method
     private static GameManager _instance;
 
-    // ÃÊ±âÈ­ ¼³Á¤ ¹Ù²ÙÁö ¸» °Í
+
+    public static GameManager Instance()
+    {
+
+        if (_instance == null)
+        {
+
+            _instance = FindObjectOfType<GameManager>();
+            if (_instance == null)
+            {
+
+                GameObject container = new GameObject("GameManager");
+                _instance = container.AddComponent<GameManager>();
+
+
+            }
+
+
+
+
+        }
+
+
+        return _instance;
+
+    }
+
+
+
+
+
+    // ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
     private int _gameRound = 0;
     private string _whoseTurn = "Enemy";
     private bool _isEnd = false;
 
-    // delegate: TurnHandler, FinishHandler ¼±¾ð
+    // delegate: TurnHandler, FinishHandler ï¿½ï¿½ï¿½ï¿½
+
+
+    delegate void TurnHandler (int round, string turn);
+    delegate void FinishHandler (bool isFinish);
+
+    TurnHandler turnHandler;
+    FinishHandler finishHandler;
+
+
+
+
+
+
+
+
+
+
+
 
     /// <summary>
     /// 2. RoundNotify:
-    /// 1) ÇöÀç ÅÏÀÌ EnemyÀÌ¸é ´ÙÀ½ gameRound·Î
+    /// 1) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Enemyï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ gameRoundï¿½ï¿½
     ///  + Debug.Log($"GameManager: Round {gameRound}.");
-    /// 2) TurnNotify() È£Ãâ
+    /// 2) TurnNotify() È£ï¿½ï¿½
     /// </summary>
     public void RoundNotify()
     {
 
 
-
         if (_isEnd == false && _whoseTurn == "Enemy" )
         {
-        Debug.Log($"GameManager:Round{gameRound}.");
-        _gameRound += 1;
-        TurnNotify();
+             Debug.Log($"GameManager:Round{_gameRound}.");
+             _gameRound += 1;
+
         }
     
-
+        TurnNotify();
 
 
 
@@ -42,27 +90,27 @@ public class GameManager : MonoBehaviour, Subject
     /// 3. TurnNotify:
     /// 1) whoseTurn update
     ///  + Debug.Log($"GameManager: {_whoseTurn} turn.");
-    /// 2) _turnHandler È£Ãâ
+    /// 2) _turnHandler È£ï¿½ï¿½
     /// </summary>
     public void TurnNotify()
     {
 
 
- if (_isEnd == false)
-        {
-            if (_whoseTurn == "Enemy")
-            {
-                Debug.Log($"GameManager: {_whoseTurn} turn.");
-                _whoseTurn = "Player"
-            }
-        
-            else if (_whoseTurn == "Player")
-            {
-                Debug.Log($"GameManager: {_whoseTurn} turn.");
-                _whoseTurn = "Enemy"
-            }
+        if (_isEnd == false)
+                {
+                    if (_whoseTurn == "Enemy")
+                    {
+                        Debug.Log($"GameManager: {_whoseTurn} turn.");
+                        _whoseTurn = "Player";
+                    }
+                
+                    else if (_whoseTurn == "Player")
+                    {
+                        Debug.Log($"GameManager: {_whoseTurn} turn.");
+                        _whoseTurn = "Enemy";
+                    }
 
-        }
+                }
 
 
 
@@ -77,7 +125,7 @@ public class GameManager : MonoBehaviour, Subject
     /// 1) isEnd update
     ///  + Debug.Log("GameManager: The End");
     ///  + Debug.Log($"GameManager: {_whoseTurn} is Win!");
-    /// 2) _finishHandler È£Ãâ
+    /// 2) _finishHandler È£ï¿½ï¿½
     /// </summary>
     public void EndNotify()
     {
@@ -85,13 +133,18 @@ public class GameManager : MonoBehaviour, Subject
         _isEnd = true;
         Debug.Log("GameManager: The End");
         Debug.Log($"GameManager: {_whoseTurn} is Win!");
-        finishHandler();
+        finishHandler(_isEnd);
 
     }
 
-    // 5. AddCharacter: _turnHandler, _finishHandler °¢°¢¿¡ ¸Þ¼Òµå Ãß°¡
+    // 5. AddCharacter: _turnHandler, _finishHandler ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ ï¿½ß°ï¿½
     public void AddCharacter(Character character)
     {
+
+        turnHandler += new TurnHandler(character.TurnUpdate);
+        finishHandler += new FinishHandler (character.FinishUpdate);
+
+
 
     }
 }
