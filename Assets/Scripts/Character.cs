@@ -50,11 +50,11 @@ public class Character : MonoBehaviour, Observer
     {
 
 
-        if ( _isFinished == false && _myName == _whoseTurn )
+        if (_isFinished == false && _myName == _whoseTurn)
         {
             AttackMotion();
-        }
 
+        }
 
     }
 
@@ -70,8 +70,30 @@ public class Character : MonoBehaviour, Observer
     public virtual void GetHit(float damage)
     {
 
-     
-     
+
+        _myHp -= damage;
+
+        if (_myHp <= 0)
+        {
+
+            DeadMotion();
+            GameManager.Instance().EndNotify();
+
+
+
+        }
+
+
+        else
+        {
+
+            GetHitMotion();
+            Debug.Log($"{_myName} HP: {_myHp}");
+
+
+
+
+        }
 
 
 
